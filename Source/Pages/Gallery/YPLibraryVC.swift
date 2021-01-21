@@ -284,6 +284,7 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
             if !multipleSelectionEnabled && YPConfig.library.preSelectItemOnMultipleSelection {
                 addToSelection(indexPath: IndexPath(row: 0, section: 0))
             }
+            delegate?.loadedPhotos(count: mediaManager.fetchResult?.count ?? 0)
         } else {
             delegate?.noPhotosForOptions()
         }

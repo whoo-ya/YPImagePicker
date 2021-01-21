@@ -12,6 +12,7 @@ import Photos
 
 public protocol YPImagePickerDelegate: AnyObject {
     func noPhotos()
+    func loadedPhotos(count: Int)
     func shouldAddToSelection(indexPath: IndexPath, numSelections: Int) -> Bool
 }
 
@@ -162,6 +163,10 @@ override open func viewDidLoad() {
 }
 
 extension YPImagePicker: ImagePickerDelegate {
+    
+    func loadedPhotos(count: Int) {
+        self.imagePickerDelegate?.loadedPhotos(count: count)
+    }
     
     func noPhotos() {
         self.imagePickerDelegate?.noPhotos()
