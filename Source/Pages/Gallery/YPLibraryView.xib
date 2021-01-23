@@ -65,8 +65,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wc4-Bl-6WY">
-                            <rect key="frame" x="344" y="0.0" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
+                            <rect key="frame" x="360" y="0.0" width="30" height="30"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemRedColor"/>

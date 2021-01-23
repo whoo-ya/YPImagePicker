@@ -47,16 +47,37 @@ public final class YPLibraryView: UIView {
         setupMaxNumberOfItemsView()
         setupProgressBarView()
         
-        selectAlbumButton.setTitle(YPConfig.wordings.libraryTitle, for: .normal)
-        multipleSelectionButton.setImage(YPConfig.icons.multipleSelectionOffIcon, for: .normal)
+        setAlbumTitle(YPConfig.wordings.libraryTitle)
+        setMultipleSelectionMode(on: false)
     }
     
     public func setAlbum(_ album: YPAlbum) {
-        selectAlbumButton.setTitle(album.title, for: .normal)
+        setAlbumTitle(album.title)
     }
     
     @IBAction func didTapSelectAlbumAction(_ sender: Any) {
         selectAlbumAction?()
+    }
+    
+    public func setMultipleSelectionMode(on: Bool) {
+        let image = on ? YPConfig.icons.multipleSelectionOnIcon : YPConfig.icons.multipleSelectionOffIcon
+        multipleSelectionButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+        assetViewContainer.setMultipleSelectionMode(on: on)
+    }
+    
+    private func setAlbumTitle(_ title: String) {
+        let arrowAttachment = NSTextAttachment()
+        arrowAttachment.image = YPConfig.icons.arrowDownIcon
+        let attachmentString = NSAttributedString(attachment: arrowAttachment)
+        
+        let titleText = NSMutableAttributedString(string: title,
+                                                  attributes: [
+                                                    .foregroundColor : YPConfig.colors.albumTitleColor
+        ])
+        titleText.append(NSAttributedString(string: " "))
+        titleText.append(attachmentString)
+        
+        selectAlbumButton.setAttributedTitle(titleText, for: .normal)
     }
     
     /// At the bottom there is a view that is visible when selected a limit of items with multiple selection

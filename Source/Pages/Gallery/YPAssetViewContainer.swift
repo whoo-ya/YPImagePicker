@@ -18,7 +18,7 @@ public class YPAssetViewContainer: UIView {
     public let curtain = UIView()
     public let spinnerView = UIView()
     public let squareCropButton = UIButton()
-    public let multipleSelectionButton = UIButton()
+    
     public var onlySquare = YPConfig.library.onlySquare
     public var isShown = true
     
@@ -85,14 +85,6 @@ public class YPAssetViewContainer: UIView {
             |-15-squareCropButton
             squareCropButton.Bottom == zoomableView!.Bottom - 15
         }
-        
-        // Multiple selection button
-        sv(multipleSelectionButton)
-        multipleSelectionButton.size(42)
-        multipleSelectionButton-15-|
-        multipleSelectionButton.setImage(YPConfig.icons.multipleSelectionOffIcon, for: .normal)
-        multipleSelectionButton.Bottom == zoomableView!.Bottom - 15
-        
     }
     
     // MARK: - Square button
@@ -125,8 +117,6 @@ public class YPAssetViewContainer: UIView {
     /// Use this to update the multiple selection mode UI state for the YPAssetViewContainer
     public func setMultipleSelectionMode(on: Bool) {
         isMultipleSelection = on
-        let image = on ? YPConfig.icons.multipleSelectionOnIcon : YPConfig.icons.multipleSelectionOffIcon
-        multipleSelectionButton.setImage(image, for: .normal)
         refreshSquareCropButton()
     }
 }
