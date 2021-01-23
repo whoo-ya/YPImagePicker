@@ -45,6 +45,7 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
             selection.removeAll()
         }
         refreshMediaRequest()
+        v.setAlbum(album)
     }
     
     func initialize() {
@@ -92,6 +93,9 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
     
     public override func loadView() {
         v = YPLibraryView.xibView()
+        v.selectAlbumAction = { [weak self] in
+            self?.delegate?.selectAlbum()
+        }
         view = v
     }
     

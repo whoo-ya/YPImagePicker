@@ -10,7 +10,7 @@ import UIKit
 import Stevia
 import Photos
 
-final class YPLibraryView: UIView {
+public final class YPLibraryView: UIView {
     
     let assetZoomableViewMinimalVisibleHeight: CGFloat  = 50
     
@@ -19,13 +19,18 @@ final class YPLibraryView: UIView {
     @IBOutlet weak var assetViewContainer: YPAssetViewContainer!
     @IBOutlet weak var assetViewContainerConstraintTop: NSLayoutConstraint!
     
+    @IBOutlet weak var selectAlbumButton: UIButton!
+    @IBOutlet weak var multipleSelectionButton: UIButton!
+    
     let maxNumberWarningView = UIView()
     let maxNumberWarningLabel = UILabel()
     let progressView = UIProgressView()
     let line = UIView()
     var shouldShowLoader = false
     
-    override func awakeFromNib() {
+    public var selectAlbumAction: (() -> Void)?
+    
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
         sv(
@@ -41,6 +46,17 @@ final class YPLibraryView: UIView {
         
         setupMaxNumberOfItemsView()
         setupProgressBarView()
+        
+        selectAlbumButton.setTitle(YPConfig.wordings.libraryTitle, for: .normal)
+        multipleSelectionButton.setImage(YPConfig.icons.multipleSelectionOffIcon, for: .normal)
+    }
+    
+    public func setAlbum(_ album: YPAlbum) {
+        selectAlbumButton.setTitle(album.title, for: .normal)
+    }
+    
+    @IBAction func didTapSelectAlbumAction(_ sender: Any) {
+        selectAlbumAction?()
     }
     
     /// At the bottom there is a view that is visible when selected a limit of items with multiple selection

@@ -8,18 +8,18 @@
 
 import UIKit
 
-struct YPLibrarySelection {
-    let index: Int
-    var cropRect: CGRect?
-    var scrollViewContentOffset: CGPoint?
-    var scrollViewZoomScale: CGFloat?
-    let assetIdentifier: String
+public struct YPLibrarySelection {
+    public let index: Int
+    public var cropRect: CGRect?
+    public var scrollViewContentOffset: CGPoint?
+    public var scrollViewZoomScale: CGFloat?
+    public let assetIdentifier: String
     
-    init(index: Int,
-         cropRect: CGRect? = nil,
-         scrollViewContentOffset: CGPoint? = nil,
-         scrollViewZoomScale: CGFloat? = nil,
-         assetIdentifier: String) {
+    public init(index: Int,
+                cropRect: CGRect? = nil,
+                scrollViewContentOffset: CGPoint? = nil,
+                scrollViewZoomScale: CGFloat? = nil,
+                assetIdentifier: String) {
         self.index = index
         self.cropRect = cropRect
         self.scrollViewContentOffset = scrollViewContentOffset

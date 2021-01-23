@@ -9,10 +9,10 @@
 import UIKit
 import Photos
 
-class LibraryMediaManager {
+public class LibraryMediaManager {
     
-    weak var v: YPLibraryView?
-    var collection: PHAssetCollection?
+    public weak var v: YPLibraryView?
+    public var collection: PHAssetCollection?
     internal var fetchResult: PHFetchResult<PHAsset>!
     internal var previousPreheatRect: CGRect = .zero
     internal var imageManager: PHCachingImageManager?

@@ -12,7 +12,7 @@ import Stevia
 import AVFoundation
 
 /// The container for asset (video or image). It containts the YPGridView and YPAssetZoomableView.
-class YPAssetViewContainer: UIView {
+public class YPAssetViewContainer: UIView {
     public var zoomableView: YPAssetZoomableView?
     public var itemOverlay: UIView?
     public let curtain = UIView()
@@ -28,7 +28,7 @@ class YPAssetViewContainer: UIView {
 
     public var itemOverlayType = YPConfig.library.itemOverlayType
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
         switch itemOverlayType {

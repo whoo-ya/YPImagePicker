@@ -374,6 +374,18 @@ extension YPPickerVC: YPLibraryViewDelegate {
         self.imagePickerDelegate?.loadedPhotos(count: count)
     }
     
+    public func selectAlbum() {
+        let vc = YPAlbumVC(albumsManager: albumsManager)
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.navigationBar.tintColor = .ypLabel
+        
+        vc.didSelectAlbum = { [weak self] album in
+            self?.libraryVC?.setAlbum(album)
+            navVC.dismiss(animated: true, completion: nil)
+        }
+        present(navVC, animated: true, completion: nil)
+    }
+    
     public func noPhotosForOptions() {
         self.imagePickerDelegate?.noPhotos()
     }

@@ -10,13 +10,13 @@
 import UIKit
 import Photos
 
-protocol YPAssetZoomableViewDelegate: class {
+public protocol YPAssetZoomableViewDelegate: class {
     func ypAssetZoomableViewDidLayoutSubviews(_ zoomableView: YPAssetZoomableView)
     func ypAssetZoomableViewScrollViewDidZoom()
     func ypAssetZoomableViewScrollViewDidEndZooming()
 }
 
-final class YPAssetZoomableView: UIScrollView {
+public final class YPAssetZoomableView: UIScrollView {
     public weak var myDelegate: YPAssetZoomableViewDelegate?
     public var cropAreaDidChange = {}
     public var isVideoMode = false
@@ -228,7 +228,7 @@ final class YPAssetZoomableView: UIScrollView {
         isScrollEnabled = true
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         myDelegate?.ypAssetZoomableViewDidLayoutSubviews(self)
     }
@@ -236,17 +236,17 @@ final class YPAssetZoomableView: UIScrollView {
 
 // MARK: UIScrollViewDelegate Protocol
 extension YPAssetZoomableView: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return isVideoMode ? videoView : photoImageView
     }
     
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
         myDelegate?.ypAssetZoomableViewScrollViewDidZoom()
         
         centerAssetView()
     }
     
-    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+    public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         guard let view = view, view == photoImageView || view == videoView else { return }
         
         // prevent to zoom out
@@ -258,11 +258,11 @@ extension YPAssetZoomableView: UIScrollViewDelegate {
         cropAreaDidChange()
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         cropAreaDidChange()
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         cropAreaDidChange()
     }
 }
