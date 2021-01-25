@@ -80,10 +80,13 @@ public class YPAssetViewContainer: UIView {
         if !onlySquare {
             // Crop Button
             squareCropButton.setImage(YPConfig.icons.cropIcon, for: .normal)
+            squareCropButton.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            squareCropButton.layer.cornerRadius = 16
+            squareCropButton.clipsToBounds = true
             sv(squareCropButton)
-            squareCropButton.size(42)
-            |-15-squareCropButton
-            squareCropButton.Bottom == zoomableView!.Bottom - 15
+            squareCropButton.size(32)
+            |-12-squareCropButton
+            squareCropButton.Bottom == zoomableView!.Bottom - 12
         }
     }
     
