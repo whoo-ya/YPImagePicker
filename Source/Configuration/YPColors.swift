@@ -77,4 +77,8 @@ public struct YPColors {
     public var albumTintColor: UIColor = .ypLabel
     /// The color of the Album's title color
     public var albumTitleColor: UIColor = .ypLabel
+    
+    /// Multiple selection button background
+    public var multipleSelectionBackgroundOn: UIColor = .ypSystemBlue
+    public var multipleSelectionBackgroundOff: UIColor = .offWhiteOrBlack
 }

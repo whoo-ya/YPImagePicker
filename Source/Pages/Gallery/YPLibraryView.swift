@@ -64,6 +64,10 @@ public final class YPLibraryView: UIView {
         
         selectAlbumTitleLabel.textColor = YPConfig.colors.albumTitleColor
         selectAlbumTitleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        
+        multipleSelectionButton.setImage(YPConfig.icons.multipleSelectionIcon, for: .normal)
+        multipleSelectionButton.layer.cornerRadius = 16
+        multipleSelectionButton.clipsToBounds = true
     }
     
     public func setAlbum(_ album: YPAlbum) {
@@ -75,8 +79,9 @@ public final class YPLibraryView: UIView {
     }
     
     public func setMultipleSelectionMode(on: Bool) {
-        let image = on ? YPConfig.icons.multipleSelectionOnIcon : YPConfig.icons.multipleSelectionOffIcon
-        multipleSelectionButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+        multipleSelectionButton.backgroundColor = on
+            ? YPConfig.colors.multipleSelectionBackgroundOn
+            : YPConfig.colors.multipleSelectionBackgroundOff
         assetViewContainer.setMultipleSelectionMode(on: on)
     }
     

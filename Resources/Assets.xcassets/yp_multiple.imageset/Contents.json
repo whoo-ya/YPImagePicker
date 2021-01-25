@@ -1,22 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "yp_multiple_light.pdf",
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "yp_multiple_dark.pdf",
+      "filename" : "yp_multiple.pdf",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }
