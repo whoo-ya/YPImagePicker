@@ -18,7 +18,9 @@ extension YPLibraryVC: PHPhotoLibraryChangeObserver {
         DispatchQueue.main.async {
             let fetchResult = self.mediaManager.fetchResult!
             let collectionChanges = changeInstance.changeDetails(for: fetchResult)
-            self.delegate?.loadedPhotos(count: collectionChanges!.fetchResultAfterChanges.count)
+            if let loadedPhotos = collectionChanges?.fetchResultAfterChanges.count {
+                self.delegate?.loadedPhotos(count: loadedPhotos)
+            }
             if collectionChanges != nil {
                 self.mediaManager.fetchResult = collectionChanges!.fetchResultAfterChanges
                 let collectionView = self.v.collectionView!

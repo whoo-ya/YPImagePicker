@@ -144,6 +144,7 @@
                 <outlet property="selectAlbumButton" destination="hgL-FS-ojK" id="xan-4C-GLm"/>
                 <outlet property="selectAlbumIconView" destination="BSr-Vo-Svt" id="x7R-bd-dGI"/>
                 <outlet property="selectAlbumTitleLabel" destination="PUv-SB-x21" id="agV-cd-KhQ"/>
+                <outlet property="toolsView" destination="cuZ-B3-1ot" id="vgd-WN-GlZ"/>
             </connections>
             <point key="canvasLocation" x="140.80000000000001" y="154.72263868065968"/>
         </view>
