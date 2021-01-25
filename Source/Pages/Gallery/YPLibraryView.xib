@@ -136,7 +136,6 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="albumTitle" destination="PUv-SB-x21" id="7Pv-ca-hyj"/>
                 <outlet property="assetViewContainer" destination="90B-0c-ych" id="75y-1t-G37"/>
                 <outlet property="assetViewContainerConstraintTop" destination="u5j-7G-j99" id="FfD-fg-8ch"/>
                 <outlet property="assetZoomableView" destination="Mc5-1c-z7q" id="sGM-mc-f2B"/>
