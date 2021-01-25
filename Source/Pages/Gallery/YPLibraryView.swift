@@ -19,7 +19,10 @@ public final class YPLibraryView: UIView {
     @IBOutlet weak var assetViewContainer: YPAssetViewContainer!
     @IBOutlet weak var assetViewContainerConstraintTop: NSLayoutConstraint!
     
+    @IBOutlet weak var toolsView: UIView!
+    @IBOutlet weak var selectAlbumTitleLabel: UILabel!
     @IBOutlet weak var selectAlbumButton: UIButton!
+    @IBOutlet weak var selectAlbumIconView: UIImageView!
     @IBOutlet weak var multipleSelectionButton: UIButton!
     
     let maxNumberWarningView = UIView()
@@ -33,6 +36,13 @@ public final class YPLibraryView: UIView {
     public override func awakeFromNib() {
         super.awakeFromNib()
         
+        configureUI()
+        
+        setAlbumTitle(YPConfig.wordings.libraryTitle)
+        setMultipleSelectionMode(on: false)
+    }
+    
+    private func configureUI() {
         sv(
             line
         )
@@ -42,13 +52,18 @@ public final class YPLibraryView: UIView {
             |line| ~ 1
         )
         
-        line.backgroundColor = .ypSystemBackground
-        
         setupMaxNumberOfItemsView()
         setupProgressBarView()
         
-        setAlbumTitle(YPConfig.wordings.libraryTitle)
-        setMultipleSelectionMode(on: false)
+        line.backgroundColor = .ypSystemBackground
+        
+        toolsView.backgroundColor = YPConfig.colors.assetViewBackgroundColor
+        
+        selectAlbumIconView.image = YPConfig.icons.arrowDownIcon
+        selectAlbumIconView.tintColor = YPConfig.colors.albumTitleColor
+        
+        selectAlbumTitleLabel.textColor = YPConfig.colors.albumTitleColor
+        selectAlbumTitleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
     }
     
     public func setAlbum(_ album: YPAlbum) {
@@ -66,18 +81,7 @@ public final class YPLibraryView: UIView {
     }
     
     private func setAlbumTitle(_ title: String) {
-        let arrowAttachment = NSTextAttachment()
-        arrowAttachment.image = YPConfig.icons.arrowDownIcon
-        let attachmentString = NSAttributedString(attachment: arrowAttachment)
-        
-        let titleText = NSMutableAttributedString(string: title,
-                                                  attributes: [
-                                                    .foregroundColor : YPConfig.colors.albumTitleColor
-        ])
-        titleText.append(NSAttributedString(string: " "))
-        titleText.append(attachmentString)
-        
-        selectAlbumButton.setAttributedTitle(titleText, for: .normal)
+        selectAlbumTitleLabel.text = title
     }
     
     /// At the bottom there is a view that is visible when selected a limit of items with multiple selection
